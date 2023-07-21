@@ -34,7 +34,7 @@ void partition(int *array, int low, int high, size_t size)
 	{
 		if (array[i] < pivot)
 		{
-			if (i < j)
+			if (i > j)
 			{
 				swap(&array[j], &array[i]);
 				print_array(array, size);
@@ -42,7 +42,7 @@ void partition(int *array, int low, int high, size_t size)
 			j++;
 		}
 	}
-	if (array[j] > array[high])
+	if (j !=  high)
 	{
 		swap(&array[j], &array[high]);
 		print_array(array, size);
