@@ -14,6 +14,7 @@ void swap(int *hp, int *jp)
 }
 /**
  * partition - recursive function that use a pivot to sort an array
+ * @array: array to sort
  * @low: indice to begin with
  * @high: indice to end with
  * @size: size of the array
@@ -58,7 +59,7 @@ void partition(int *array, int low, int high, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-	if (size <= 1)
+	if (size <= 1 || array == NULL)
 		return;
 	partition(array, 0, size - 1, size);
 }
