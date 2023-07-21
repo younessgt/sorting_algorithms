@@ -14,6 +14,7 @@ void swap(int *hp, int *jp)
 }
 /**
  * partition - function that use a pivot to sort an array
+ * @array: array to sort
  * @low: indice to begin with
  * @high: indice to end with
  * @size: size of the array
@@ -31,7 +32,7 @@ int partition(int *array, int low, int high, size_t size)
 	{
 		if (array[i] < pivot)
 		{
-			if (i != j)
+			if (i != j && array[i] != array[j])
 			{
 				swap(&array[j], &array[i]);
 				print_array(array, size);
@@ -39,7 +40,7 @@ int partition(int *array, int low, int high, size_t size)
 			j++;
 		}
 	}
-	if (j != high)
+	if (j != high && array[j] != array[high])
 	{
 		swap(&array[j], &array[high]);
 		print_array(array, size);
@@ -48,6 +49,7 @@ int partition(int *array, int low, int high, size_t size)
 }
 /**
  * recursive - function that sort the left and right of the array
+ * @array: array to sort
  * @low: the indice to begin with
  * @high: the indice to end with
  * @size: size of the array
