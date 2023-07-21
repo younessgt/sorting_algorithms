@@ -13,28 +13,25 @@ void swap(int *hp, int *jp)
 	*jp = temp;
 }
 /**
- * partition - recursive function that use a pivot to sort an array
- * @array: array to sort
+ * partition - function that use a pivot to sort an array
  * @low: indice to begin with
  * @high: indice to end with
  * @size: size of the array
  * Return: pivot indice
  */
-void partition(int *array, int low, int high, size_t size)
+int partition(int *array, int low, int high, size_t size)
 {
 	int i, j;
 	int pivot;
 
 	pivot = array[high];
 	j = low;
-	if (low >= high)
-		return;
 
 	for (i = low; i <= high - 1; i++)
 	{
 		if (array[i] < pivot)
 		{
-			if (i > j)
+			if (i != j)
 			{
 				swap(&array[j], &array[i]);
 				print_array(array, size);
@@ -42,15 +39,31 @@ void partition(int *array, int low, int high, size_t size)
 			j++;
 		}
 	}
-	if (j !=  high)
+	if (j != high)
 	{
 		swap(&array[j], &array[high]);
 		print_array(array, size);
 	}
-	partition(array, low, j - 1, size);
-	partition(array, j + 1, high, size);
+	return (j);
 }
+/**
+ * recursive - function that sort the left and right of the array
+ * @low: the indice to begin with
+ * @high: the indice to end with
+ * @size: size of the array
+ * Return: nothing
+ */
+void recursive(int *array, int low, int high, size_t size)
+{
+	int j;
 
+	if (low < high)
+	{
+		j = partition(array, low, high, size);
+		recursive(array, low, j - 1, size);
+		recursive(array, j + 1, high, size);
+	}
+}
 /**
  * quick_sort - function that sort an array usin quicksort algo
  * @array: array to sort
@@ -59,7 +72,7 @@ void partition(int *array, int low, int high, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-	if (size <= 1 || array == NULL)
+	if (size <= 1)
 		return;
-	partition(array, 0, size - 1, size);
+	recursive(array, 0, size - 1, size);
 }
