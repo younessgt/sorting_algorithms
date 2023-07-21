@@ -27,7 +27,7 @@ void partition(int *array, int low, int high, size_t size)
 
 	pivot = array[high];
 	j = low;
-	if (low > high)
+	if (low >= high)
 		return;
 
 	for (i = low; i <= high - 1; i++)
