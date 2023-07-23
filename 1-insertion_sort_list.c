@@ -19,11 +19,11 @@ void insertion_sort_list(listint_t **list)
 		temp = temp->next;
 		while (curr_node->prev != NULL && ((curr_node->n) < (curr_node->prev->n)))
 		{
+			curr_node->prev->next = curr_node->next;
 			if (curr_node->next != NULL)
 			{
 				curr_node->next->prev = curr_node->prev;
 			}
-			curr_node->prev->next = curr_node->next;
 			curr_node->next = curr_node->prev;
 			curr_node->prev = curr_node->next->prev;
 			curr_node->next->prev = curr_node;
