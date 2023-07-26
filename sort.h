@@ -27,5 +27,6 @@ int partition(int *array, int low, int high, size_t size);
 void recursion(int *array, int low, int high, size_t size);
 void merge_sort(int *array, size_t size);
 void merge(int *array, int *left, int first, int *right, int second);
+void shell_sort(int *array, size_t size);
 
 #endif
